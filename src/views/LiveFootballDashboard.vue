@@ -233,10 +233,10 @@ export default {
       } else if (activeTab.value === "finished") {
         filtered = filterStatus("Kết thúc");
       }
-      if (searchQuery.value) {
+      if (searchQuery.value.trim().length > 0) {
         filtered = filtered.map((match) => ({
           ...match,
-          games: match.games.filter((game) => game.home_team.toLowerCase().includes(searchQuery.value.toLowerCase()) || game.away_team.toLowerCase().includes(searchQuery.value.toLowerCase())),
+          games: match.games.filter((game) => game.home_team.toLowerCase().includes(searchQuery.value.trim().toLowerCase()) || game.away_team.toLowerCase().includes(searchQuery.value.toLowerCase())),
         }));
       }
       return filtered;
